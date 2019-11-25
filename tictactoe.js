@@ -44,14 +44,12 @@ for(let sq of square){
       winner(opponent);
     }
 }
-tie();
+tie(player,opponent);
 })
 }
 }
-function tie(){
-  if(player.occupiedSquare.length + opponent.occupiedSquare.length === 9 && player.won === false
-    || player.occupiedSquare.length + opponent.occupiedSquare.length === 9 && opponent.won === false
-  ){
+function tie(player,opponent){
+  if(player.occupiedSquare.length + opponent.occupiedSquare.length === 9 && player.won === false && opponent.won === false){
     end.style.display = "block";
     endtext = document.createElement('p');
     endtext.textContent = "It's a tie";
@@ -78,6 +76,8 @@ restartButton.addEventListener('click',function(e){
   for(let sq of square){
   sq.textContent ="";
 }
+  player.won = false;
+  opponent.won = false;
   player.occupiedSquare =[];
   opponent.occupiedSquare =[];
   end.style.display = "none";
